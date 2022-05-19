@@ -28,7 +28,7 @@ router.get("/:id", cAuth.checkAuth, (req, res) => {
 //    Register new user
 
 router.post("/register", async (req, res) => {
-    const { username, password, gameTimes } = req.body
+    const { username, password } = req.body
     const hashedPassword = bcrypt.hashSync(password, 10)
     const existingUser = await User.findOne({ username: username })
     
@@ -43,24 +43,26 @@ router.post("/register", async (req, res) => {
             name: req.body.name,
             details: {
                 car: req.body.car,
-                lapTime: req.body.lapTime
+                lapTime: req.body.lapTime,
+                gameTimes: req.body.gameTimes
             }
         },
         track2Stats: {
             name: req.body.name,
             details: {
                 car: req.body.car,
-                lapTime: req.body.lapTime
+                lapTime: req.body.lapTime,
+                gameTimes: req.body.gameTimes
             }
         },
         track3Stats: {
             name: req.body.name,
             details: {
                 car: req.body.car,
-                lapTime: req.body.lapTime
+                lapTime: req.body.lapTime,
+                gameTimes: req.body.gameTimes
             }
         },
-        gameTimes
     }) 
     if(password) {
         user.save()
@@ -69,10 +71,7 @@ router.post("/register", async (req, res) => {
     }
     else {
         return res.status(400).json({message: "Please give password"})
-    }
-
-     
-    
+    }  
 })
 
 //    Login user
