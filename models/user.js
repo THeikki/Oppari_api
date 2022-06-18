@@ -6,13 +6,12 @@ const infoSchema = new Schema({
     car: {
         type: String,
         required: true,
-        enum: ["hyperCar", "muscleCar", "saloonCar", "null"],
         default: "null"
     },
     lapTime: {
         type: Number,
         required: true,
-        default: 0
+        default: 999
     },
     gameTimes: {
         type: Number,
@@ -38,7 +37,7 @@ const userSchema = new Schema(
         track1Stats: {
             name: {
                 type: String,
-                default: 'savannah'
+                default: 'Savannah'
             },
             details: {
                 type: infoSchema,
@@ -48,7 +47,7 @@ const userSchema = new Schema(
         track2Stats: {
             name: {
                 type: String,
-                default: 'mountains'
+                default: 'Mountains'
             },
             details: {
                 type: infoSchema,
@@ -58,7 +57,7 @@ const userSchema = new Schema(
         track3Stats: {
             name: {
                 type: String,
-                default: 'city'
+                default: 'City'
             },
             details: {
                 type: infoSchema,

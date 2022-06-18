@@ -107,8 +107,6 @@ router.post("/login", async (req, res) => {
 //    Update User statistics
 
 router.put("/update/:id", cAuth.checkAuth, (req, res) => {
-    var { track1Stats, track2Stats, track3Stats } = req.body
-    
     User.findByIdAndUpdate({_id: req.params.id}, req.body)
         .then(user => {
             track1Stats = {
