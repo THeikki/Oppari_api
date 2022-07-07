@@ -37,7 +37,7 @@ const userSchema = new Schema(
         track1Stats: {
             name: {
                 type: String,
-                default: 'Savannah'
+                default: "Savannah"
             },
             details: {
                 type: infoSchema,
@@ -47,7 +47,7 @@ const userSchema = new Schema(
         track2Stats: {
             name: {
                 type: String,
-                default: 'Mountains'
+                default: "Mountains"
             },
             details: {
                 type: infoSchema,
@@ -57,7 +57,7 @@ const userSchema = new Schema(
         track3Stats: {
             name: {
                 type: String,
-                default: 'City'
+                default: "City"
             },
             details: {
                 type: infoSchema,

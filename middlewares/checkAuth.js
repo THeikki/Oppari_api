@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // Check authentication
 
@@ -10,7 +10,7 @@ function checkAuth(req, res, next) {
         req.userData = decodedToken;
         return next();
     } catch (error) {
-        return res.status(401).json({message:'Unauthorized'});     
+        return res.status(401).json({message:"Unauthorized"});     
     }
 }
 
