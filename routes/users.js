@@ -9,13 +9,13 @@ const router = express.Router()
 router.use(bodyParser.json())
 
 //    Find users
-
+/*
 router.get("/", (req, res) => {
     User.find()
     .then(users => res.status(200).json(users))
     .catch(error => res.status(400).json({message: error}))
 })
-
+*/
 //    Find single user by id
 
 router.get("/:id", cAuth.checkAuth, (req, res) => {
