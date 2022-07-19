@@ -8,14 +8,6 @@ const cAuth = require("../middlewares/checkAuth")
 const router = express.Router()
 router.use(bodyParser.json())
 
-//    Find users
-/*
-router.get("/", (req, res) => {
-    User.find()
-    .then(users => res.status(200).json(users))
-    .catch(error => res.status(400).json({message: error}))
-})
-*/
 //    Find single user by id
 
 router.get("/:id", cAuth.checkAuth, (req, res) => {
@@ -90,7 +82,7 @@ router.post("/login", async (req, res) => {
                 { username: result.username },
                 process.env.JWT_TOKEN,
                 {
-                  expiresIn: "2h",
+                  expiresIn: "30s",
                 }
               )          
             return res.status(200).json({
@@ -107,7 +99,7 @@ router.post("/login", async (req, res) => {
 //    Update User statistics
 
 router.put("/update/:id", cAuth.checkAuth, (req, res) => {
-    User.findByIdAndUpdate({_id: req.params.id}, req.body)
+        User.findByIdAndUpdate({_id: req.params.id}, req.body)
         .then(user => {
             track1Stats = {
                 name: req.body.name,
@@ -132,12 +124,13 @@ router.put("/update/:id", cAuth.checkAuth, (req, res) => {
                     lapTime: req.body.lapTime,
                     gameTimes: req.body.gameTimes
                 }
-            }
+            }    
+           
             user.save()
             .then(() => res.status(200).json({message: "User stats updated"}))
             .catch(error => res.status(400).json({message: error}))
         })
-        .catch(() => res.status(500).json({message: "Not found"}))    
+        .catch(error => res.status(500).json({message: error}))    
 })
 
 //    Delete user
